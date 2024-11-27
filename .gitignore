@@ -1,0 +1,10 @@
+!**/.gitkeep
+straight/
+auto-saves/*
+!auto-saves/.gitkeep
+auto-save-list/*
+backups/*
+tree-sitter/*
+!tree-sitter/.gitkeep
+recentf
+custom.el
