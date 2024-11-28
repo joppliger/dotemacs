@@ -1,0 +1,77 @@
+#+TITLE: Julian's dotemac
+#+AUTHOR: J.Oppliger
+
+This is an **Emacs 29.4** configuration! This setup is designed to be
+minimalist, modern, distraction-free, and tailored for
+note-taking.
+
+------
+* Features
+
+** 📦 Package management
+- *straight.el + use-package*: Modern package management with
+  built-in lazy loading and flexibility.
+
+** 🎨 Beautiful UI
+- *Distraction-Free Design*:
+  - Minimalist UI with no menu bar, toolbar, or scrollbars.
+  - Space added around windows and frames for a cleaner look.
+- *Doom Feather Light Theme*: A sleek, modern, and light color theme
+- *Custom Modeline*: Powered by `mood-line` for minimalist modelibe
+- *All-The-Icons Support*: Gorgeous icons with automatic font
+  installation.
+
+** 🖋️ Productivity Tools
+- *Org-Mode & Enhancements*:
+  - `org-roam`: Effortless note management and knowledge graph
+    creation.
+  - `org-bullets` & `org-superstar`: Beautiful, organized headings.
+  - `toc-org`: Automatic table of contents generation.
+  - `org-download`: Drag-and-drop image support for notes.
+- *Markdown Mode*: Perfect for lightweight, syntax-highlighted document
+  creation.
+
+** 🔧 File and Buffer Management
+- *Enhanced Dired*:
+  - Reuse buffers for smooth navigation.
+  - Icon support with `all-the-icons-dired`.
+  - Sidebar functionality with `dired-sidebar`.
+- *Recent Files*: Keep the most recently accessed files at your
+  fingertips.
+- *Find-File Root Shortcut*: Type `//` to jump to the root directory
+  instantly.
+
+** 🧠 Smart Editing
+- *Rainbow Delimiters and Identifiers*: Highlight matching parentheses
+  and variables for clarity.
+- *Tree-sitter*: Native support for powerful syntax highlighting and
+  structural editing.
+- *Windmove*: Seamless window navigation using `M-<arrow keys>`.
+
+** 🖥️ Terminal Integration
+- *Vterm*: A blazing-fast terminal emulator integrated directly into
+  Emacs.
+
+* Installation Instructions
+
+1. **Install some dependencies** (on ArchLinux):
+   #+BEGIN_SRC bash
+   sudo pacman -S cmake noto-fonts-emoji otf-comicshanns-nerd
+   #+END_SRC
+
+2. **Clone the Configuration**:
+   #+BEGIN_SRC bash
+   git clone git@github.com:joppliger/dotemacs.git ~/.config/emacs
+   #+END_SRC
+
+3. **Start Emacs**: Run ~emacs~ and let it install the necessary packages and dependencies.
+
+4. **Enjoy!** 🎉
+
+* 📷 Screenshots
+
+[[./screenshot.png]]
+
+------
+
+Thank you for exploring my Emacs setup! Feel free to fork, adapt, or provide feedback to make it even better. 💻✨

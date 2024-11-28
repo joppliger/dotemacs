@@ -1,9 +1,7 @@
 ;;
-;;
-;;
+;;    ✦     
 ;;   𝓙.𝓞𝓹𝓹𝓵𝓲𝓰𝓮𝓻 
-;;
-;;
+;;   org-mode config
 ;;
 
 ;; Better defaults
@@ -46,6 +44,8 @@
                         (right-fringe . 0))
                       default-frame-alist))
 
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; Use straight with use-package
 (setq straight-use-package-by-default t)
 
@@ -63,44 +63,18 @@
 (straight-use-package 'use-package)
 
 ;; Fonts
-(set-face-attribute 'default nil :font "Fira Code" :height 120)
-
-;; Use tree-sitter
-(setq major-mode-remap-alist
-      '((python-mode . python-ts-mode)
-        (js-mode . js-ts-mode)
-        (css-mode . css-ts-mode)
-        (yaml-mode . yaml-ts-mode)
-        (bash-mode . bash-ts-mode)
-        (c-mode . c-ts-mode)
-        (c++-mode . c++-ts-mode)
-        (json-mode . json-ts-mode)
-        (java-mode . java-ts-mode)
-        (typescript-mode . typescript-ts-mode)))
-
-(setq treesit-language-source-alist
-   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-     (cmake "https://github.com/uyha/tree-sitter-cmake")
-     (css "https://github.com/tree-sitter/tree-sitter-css")
-     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-     (go "https://github.com/tree-sitter/tree-sitter-go")
-     (html "https://github.com/tree-sitter/tree-sitter-html")
-     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-     (json "https://github.com/tree-sitter/tree-sitter-json")
-     (make "https://github.com/alemuller/tree-sitter-make")
-     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-     (python "https://github.com/tree-sitter/tree-sitter-python")
-     (toml "https://github.com/tree-sitter/tree-sitter-toml")
-     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
-
-(unless (file-directory-p treesit-language-source-directory)
-  (make-directory treesit-language-source-directory t)
-  (mapc #'treesit-install-language-grammar
-        (mapcar #'car treesit-language-source-alist)))
+(set-face-attribute 'default nil :font "ComicShannsMono Nerd Font Mono" :height 140)
 
 ;; Packages
+(use-package emojify
+  :config
+  (when (member "Segoe UI Emoji" (font-family-list))
+    (set-fontset-font
+     t 'symbol (font-spec :family "Segoe UI Emoji") nil 'prepend))
+  (setq emojify-display-style 'unicode)
+  (setq emojify-emoji-styles '(unicode))
+  (bind-key* (kbd "C-c .") #'emojify-insert-emoji))
+
 (use-package vertico
   :straight t
   :init
@@ -163,22 +137,15 @@
   :straight t
   :hook (dired-mode . all-the-icons-dired-mode))
 
-(use-package doom-modeline
+(use-package mood-line
   :straight t
   :init
-  (doom-modeline-mode 1)
-  :custom
-  (doom-modeline-height 15)
-  (doom-modeline-bar-width 3)
-  (doom-modeline-minor-modes nil)
-  (doom-modeline-icon t)
-  (doom-modeline-major-mode-icon t)
-  (doom-modeline-buffer-file-name-style 'truncate-upto-project))
+  (mood-line-mode))
 
 (use-package doom-themes
   :straight t
   :config
-  (load-theme 'doom-tokyo-night t)
+  (load-theme 'doom-feather-light t)
   :custom
   (doom-themes-enable-bold t)
   (doom-themes-enable-italic t))
@@ -260,3 +227,4 @@
   :custom
   (vterm-always-compile-module t)
   (vterm-max-scrollback 10000))
+
