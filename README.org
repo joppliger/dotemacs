@@ -36,10 +36,14 @@ note-taking.
   - Reuse buffers for smooth navigation.
   - Icon support with `all-the-icons-dired`.
   - Sidebar functionality with `dired-sidebar`.
-- *Recent Files*: Keep the most recently accessed files at your
-  fingertips.
 - *Find-File Root Shortcut*: Type `//` to jump to the root directory
   instantly.
+- *Recent Files*: Keep the most recently accessed files at your
+  fingertips.
+
+** 🖥️ Terminal Integration
+- *Vterm*: A blazing-fast terminal emulator integrated directly into
+  Emacs.
 
 ** 🧠 Smart Editing
 - *Rainbow Delimiters and Identifiers*: Highlight matching parentheses
@@ -48,20 +52,18 @@ note-taking.
   structural editing.
 - *Windmove*: Seamless window navigation using `M-<arrow keys>`.
 
-** 🖥️ Terminal Integration
-- *Vterm*: A blazing-fast terminal emulator integrated directly into
-  Emacs.
-
 * Installation Instructions
 
 1. **Install some dependencies** (on ArchLinux):
    #+BEGIN_SRC bash
-   sudo pacman -S cmake noto-fonts-emoji otf-comicshanns-nerd
+     sudo pacman -S cmake noto-fonts-emoji otf-comicshanns-nerd
+     yay -S phpactor
+     npm install --global excalidraw_export # for excalidraw support
    #+END_SRC
 
 2. **Clone the Configuration**:
    #+BEGIN_SRC bash
-   git clone git@github.com:joppliger/dotemacs.git ~/.config/emacs
+     git clone git@github.com:joppliger/dotemacs.git ~/.config/emacs
    #+END_SRC
 
 3. **Start Emacs**: Run ~emacs~ and let it install the necessary packages and dependencies.

@@ -44,6 +44,10 @@
                         (right-fringe . 0))
                       default-frame-alist))
 
+(global-visual-line-mode 1)
+(setq-default word-wrap t)
+(setq truncate-lines nil)
+
 (put 'dired-find-alternate-file 'disabled nil)
 
 ;; Use straight with use-package
@@ -183,7 +187,24 @@
   :config
   (setq org-hide-emphasis-markers t)
   (setq org-startup-indented t)
-  (setq org-ellipsis " ▾"))
+  (setq org-ellipsis " ▾")
+  (setq plantuml-default-exec-mode 'jar)
+  (setq org-startup-with-inline-images t)
+  (setq org-plantuml-jar-path
+        (expand-file-name "/usr/share/java/plantuml/plantuml.jar"))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (shell . t)
+     (plantuml . t))))
+
+(use-package plantuml-mode
+  :straight t
+  :mode ("\\.plantuml\\'" . plantuml-mode)
+  :custom
+  (plantuml-jar-path (expand-file-name "/usr/share/java/plantuml/plantuml.jar"))
+  (plantuml-default-exec-mode 'jar))
 
 (use-package org-roam
   :straight t
@@ -228,3 +249,33 @@
   (vterm-always-compile-module t)
   (vterm-max-scrollback 10000))
 
+(use-package org-excalidraw
+  :straight (:type git :host github :repo "wdavew/org-excalidraw")
+  :custom
+  (org-excalidraw-directory "~/Documents/org/excalidraw"))
+
+(use-package php-mode
+  :straight t
+  :mode ("\\.php\\'" . php-mode))
+
+(use-package company
+  :straight t
+  :init
+  (global-company-mode 1)
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.1)
+  (company-show-numbers t)
+  (company-tooltip-align-annotations t))
+
+(use-package company-php
+  :straight t
+  :after (php-mode company)
+  :config
+  (add-to-list 'company-backends 'company-ac-php-backend))
+
+(use-package ac-php
+  :straight t
+  :after php-mode
+  :config
+  (ac-php-core-eldoc-setup))
